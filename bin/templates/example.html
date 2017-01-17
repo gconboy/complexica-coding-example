@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Complexica Coding Exercise - Glen Conboy</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<table title="Restaurants File" border="1">
+    	<thead>
+    		<tr>
+    			<th>Latitude</th>
+    			<th>Longitude</th>
+    			<th>Title</th>
+    			<th>Address</th>
+    		</tr>
+    	</thead>
+   		<tr th:each="restaurant : ${restaurants}">
+   			<td th:text="${restaurant.Latitude}"/>
+   			<td th:text="${restaurant.Longitude}"/>
+   			<td th:text="${restaurant.Title}"/>
+   			<td th:text="${restaurant.Address}"/>
+		</tr>
+	</table>
+	<hr/>
+    <form action="#" th:action="@{/example}" th:object="${requestData}" method="post">
+    	<p>URL: <input type="text" th:field="*{url}" /></p>
+        
+        <input type="submit" name="post" value="POST" /> 
+        <input type="submit" name="get" value="GET" /> 
+    </form>
+
+    <p th:text="'HTTP Response Code: ' + ${code}" />
+    <p th:text="'Response Body: ' + ${response}" />
+
+</body>
+</html>
